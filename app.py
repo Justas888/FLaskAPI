@@ -4,10 +4,15 @@ Visi standartiniai veiksmai su db, prijungsim sablone css
 
 
 from models import db, Automobilis
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from serializers import AutomobilisSchema
+from flask_cors import CORS
+
+
 
 
 app = Flask(__name__)
+CORS(app)
 
 # fizines db prijungimas, konfiguracija
 
@@ -18,6 +23,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 with app.app_context():
     db.create_all()
+
+@app.route("/api/automobiliai")
+def api_automobiliai():
+    all_cars = Automobilis.query.all()
+    cars_data = [AutomobilisSchema.model_validate(car).model_dump() for car in all_cars]
+    return jsonify(cars_data)
 
 
 @app.route("/")
