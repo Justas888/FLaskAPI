@@ -30,6 +30,20 @@ def api_automobiliai():
     cars_data = [AutomobilisSchema.model_validate(car).model_dump() for car in all_cars]
     return jsonify(cars_data)
 
+@app.route("/api2/automobiliai")
+def api2_automobiliai():
+    all_cars = Automobilis.query.all()
+    cars_data = [{
+        "id": car.id,
+        "gamintojas": car.gamintojas,
+        "modelis": car.modelis,
+        "spalva": car.spalva,
+        "kaina": car.kaina,
+        "kainaPVM": car.kaina_su_pvm,
+        "sukurimo_data": car.sukurimo_data
+    }for car in all_cars]
+    return jsonify(cars_data)
+
 
 @app.route("/")
 def home():
