@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4> Automobilio {{ automobilis.gamintojas }} {{ automobilis.modelis }} redagavimas</h4>
+<form action="" method="post">
+  <p>Gamintojas:</p>
+  <p><input type="text" value="{{ automobilis.gamintojas }}" name="gamintojaslaukelis"></p>
+  <p>Modelis:</p>
+  <p><input type="text" value="{{ automobilis.modelis }}" name="modelislaukelis"></p>
+  <p>Spalva:</p>
+  <p><input type="text" value="{{ automobilis.spalva }}" name="spalvalaukelis"></p>
+  <p>Automobilio kaina be PVM:</p>
+  <p><input type="text" value="{{ automobilis.kaina }}" name="kainalaukelis"></p>
+  <p><input type="submit" value="išsaugoti"></p>
+
+</form>
+{% endblock %}

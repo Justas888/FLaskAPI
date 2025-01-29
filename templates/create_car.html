@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>Įveskite naują automobilį</h4>
+<form action="/automobilis/naujas" method="post">
+    <p>Gamintojas:</p>
+    <p><input type="text" name="gamintojaslaukelis"></p>
+    <p>Modelis:</p>
+    <p><input type="text" name="modelislaukelis"></p>
+    <p>Spalva:</p>
+    <p><input type="text" name="spalvalaukelis"></p>
+    <p>Automobilio kaina be PVM:</p>
+    <p><input type="text" name="kainalaukelis"></p>
+    <p><input type="submit" value="išsaugoti"></p>
+</form>
+{% endblock %}

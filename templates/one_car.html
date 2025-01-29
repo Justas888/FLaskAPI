@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h4>Duomenys apie automobilį:</h4>
+  <p>id: {{ automobilis.id }}</p>
+  <p>gamintojas: {{ automobilis.gamintojas }}</p>
+  <p>modelis: {{ automobilis.modelis }}</p>
+  <p>spalva: {{ automobilis.spalva }}</p>
+  <p>kaina: {{ automobilis.kaina }}</p>
+  <p>kaina su pvm: {{ automobilis.kaina_su_pvm }}</p>
+  <p>sukurimo data: {{ automobilis.sukurimo_data }}</p>
+{% endblock %}

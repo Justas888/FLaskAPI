@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4> VISU Parduodamų automobilių sąrašas</h4>
+<form action="" method="get">
+    <p><input type="text" name="searchlaukelis"></p>
+    <p><input type="submit" value="filtruoti"></p>
+</form>
+
+<p><a href="/automobilis/naujas" >Pridėti naują automobilį</a></p>
+<table>
+    <tr>
+        <th>id</th>
+        <th>gamintojas</th>
+        <th>modelis</th>
+        <th>spalva</th>
+        <th>kaina</th>
+        <th>kaina su PVM</th>
+        <th>veiksmai</th>
+    </tr>
+    {% for automobilis in automobiliai %}
+    <tr>
+        <td>{{ automobilis.id }}</td>
+        <td>{{ automobilis.gamintojas }}</td>
+        <td>{{ automobilis.modelis }}</td>
+        <td>{{ automobilis.spalva }}</td>
+        <td>{{ automobilis.kaina }}</td>
+        <td>{{ automobilis.kaina_su_pvm }}</td>
+        <td><a href="/automobilis/{{ automobilis.id }}"><input type="submit" value="žiūrėti"></a>
+            <a href="/automobilis/redaguoti/{{ automobilis.id }}"><input type="submit" value="redaguoti"></a>
+            <form action="/automobilis/trynimas/{{ automobilis.id }}" method="post" style="display:inline;">
+                <input type="submit" value="trinti">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p><b>Bendra kaina be PVM: </b>{{ bendra_suma_be_pvm }} EUR</p>
+<p><b>Bendra kaina su PVM: </b>{{ bendra_suma_su_pvm }} EUR</p>
+{% endblock %}
